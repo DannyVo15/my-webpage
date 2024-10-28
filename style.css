@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="style.css">
+/* Centering content and setting background */
+body {
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Styling the main headers */
+h1 {
+    color: #0056b3;
+    font-size: 2.5em;
+    margin: 20px;
+}
+
+/* Adding style for the links */
+a {
+    color: #0056b3;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Additional layout styles */
+p {
+    font-size: 1.1em;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Placeholder visualization styling */
+img {
+    max-width: 80%;
+    height: auto;
+    margin: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
