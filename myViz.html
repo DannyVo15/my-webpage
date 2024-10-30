@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Data Visualizations</title>
+    <title>Basic Bar Chart</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-    <h1>My Bar Chart</h1>
-    <svg id="barChart" width="500" height="300"></svg>
-
-    <!-- D3.js script for bar chart -->
+    <h1>Simple Bar Chart</h1>
+    <div id="chart"></div>
+    
     <script>
         // Sample data
         const data = [
@@ -24,8 +23,15 @@
         ];
 
         // Set dimensions and margins
-        const width = 500, height = 300, margin = { top: 20, right: 30, bottom: 30, left: 40 };
-        const svg = d3.select("#barChart");
+        const width = 500;
+        const height = 300;
+        const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+
+        // Create the SVG element
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
 
         // Create scales
         const x = d3.scaleBand()
