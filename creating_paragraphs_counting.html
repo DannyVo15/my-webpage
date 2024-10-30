@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating Paragraphs with D3</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h1>Dynamic Paragraphs with D3</h1>
+    <div id="content"></div>
+    
+    <script>
+        // Sample data for paragraph counting
+        const data = [1, 2, 3, 4, 5];
+
+        // Select the content div and bind the data
+        d3.select("#content")
+          .selectAll("p")       // Select non-existent p elements to bind to
+          .data(data)
+          .enter()              // Enter selection for new elements
+          .append("p")          // Append a paragraph for each data point
+          .text(d => `Paragraph number: ${d}`); // Set the text of each paragraph
+    </script>
+</body>
+</html>
