@@ -3,16 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Visualization</title>
-    <link rel="stylesheet" href="style.css">
+    <title>My Data Visualizations</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
-    
 <body>
-    <h1>Visualization Page</h1>
-    <p>Here you can see some interesting data visualizations.</p>
-    <!-- Updated visualization -->
-    <img src="favorite_visualization.png" alt="My Favorite Sales Visualization">
-    <br>
-    <a href="index.html">Back to Home</a>
+    <h1>My Bar Chart</h1>
+    <svg id="barChart" width="500" height="300"></svg>
+
+    <!-- D3.js script for bar chart -->
+    <script>
+        // Sample data
+        const data = [
+            { name: "A", value: 30 },
+            { name: "B", value: 80 },
+            { name: "C", value: 45 },
+            { name: "D", value: 60 },
+            { name: "E", value: 20 },
+            { name: "F", value: 90 },
+            { name: "G", value: 55 }
+        ];
+
+        // Set dimensions and margins
+        const width = 500, height = 300, margin = { top: 20, right: 30, bottom: 30, left: 40 };
+        const svg = d3.select("#barChart");
+
+        // Create scales
+        const x = d3.scaleBand()
+            .domain(data.map(d => d.name))
+            .range([margin.left, width - margin.right])
+            .padding(0.1);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.value)])
+            .nice()
+            .range([height - margin.bottom, margin.top]);
+
+        // Add bars
+        svg.append("g")
+            .selectAll("rect")
+            .data(data)
+            .join("rect")
+            .attr("x", d => x(d.name))
+            .attr("y", d => y(d.value))
+            .attr("height", d => y(0) - y(d.value))
+            .attr("width", x.bandwidth())
+            .attr("fill", "steelblue");
+
+        // Add x-axis
+        svg.append("g")
+            .attr("transform", `translate(0,${height - margin.bottom})`)
+            .call(d3.axisBottom(x));
+
+        // Add y-axis
+        svg.append("g")
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y));
+    </script>
 </body>
 </html>
